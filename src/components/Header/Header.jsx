@@ -1,11 +1,11 @@
 import './Header.css';
-import logo from '../../assets/images/alimama.png'
+import logo from '../../assets/alimama.png'
 const Header = () => {
     return (
         <>
-           <nav className="header">
+        <nav className="header">
             <div className="left-nav">
-            <img src={logo} alt="" />
+                <img src={logo} alt="" />
             </div>
             <div className="right-nav">
                 <a href="/shop">Shop</a>
@@ -13,8 +13,8 @@ const Header = () => {
                 <a href="/inventory">Inventory</a>
                 <a href="/login">Login</a>
             </div>
-           </nav>
-               
+        </nav>
+            
         </>
     );
 };

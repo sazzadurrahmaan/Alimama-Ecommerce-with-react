@@ -1,22 +1,17 @@
 .header{
-    height:80px;
-    background-color: #1C2B35;
+    height: 80px;
+    background-color:#1C2B35;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-left: 100px;
     padding-right: 100px;
 }
-.left-nav img{
-    color:rgb(0, 0, 0);
-}
-
 .right-nav a{
     text-decoration: none;
-    color:#ffff;
-    margin-left: 30px;
+    color:aliceblue;
+    margin-left:30px;
 }
-
 .right-nav a:hover{
-    color:rgb(253, 168, 11);
+    color:rgb(237, 160, 15);
 }
