@@ -5,53 +5,63 @@ import Product from '../Product/Product';
 import './Shop.css';
 
 const Shop = () => {
-    const [products,setProducts] = useState([])
-    
-    const [cart,setCart] = useState([])
+    const [products, setProducts] = useState([])
 
-    const  addToCart = (product) =>{
-        const newCart = [...cart,product];
+    const [cart, setCart] = useState([])
+
+    const addToCart = (product) => {
+        const newCart = [...cart, product];
         setCart(newCart);
         addToDB(product.id);
     }
-    
-    useEffect(()=>{
+
+    useEffect(() => {
         fetch('products.json')
-        .then(res=> res.json())
-        .then(data => setProducts(data))
-    },[])
+            .then(res => res.json())
+            .then(data => setProducts(data))
+    }, [])
 
-    useEffect(()=>{
+    useEffect(() => {
+         //step -1: get id
         const storedCart = getCartItem();
-        //step -1: get id
-        for(const id in storedCart){
-            //step -2 :get the product using id;
-            const addedProduct = products.find(product => product.id ===id);
-       // console.log(storedProduct)
-       //step -3 :quantity of the product
+        
+        const savedCart = [];
+        
+        //step -2 :get the product using id;
+        for (const id in storedCart) {
+          const addedProduct = products.find(product => product.id === id);
+            
+        //step -3 :quantity of the product
+        if(addedProduct){
+            const quantity = storedCart[id];
 
-       const quantity = storedCart[id];
-       addedProduct.quantity= quantity;
-       console.log(quantity);
+            addedProduct.quantity = quantity;
+
+        //step -4: push added product to saved cart
+
+            savedCart.push(addedProduct);
         }
-    },[products])
+
+     } 
+     setCart(savedCart);
+    }, [products])
 
     return (
         <>
-        <div className='shop-container'>
-          <div className="products-container">
-           {products.map(product =>
-            <Product product={product} 
-            key={product.id} handleAddToCart={addToCart}>
-           </Product>)}
-        </div>
-           
-        <div className="cart-container">
-          <Cart cart={cart}></Cart>
-        </div>
-        </div>
+            <div className='shop-container'>
+                <div className="products-container">
+                    {products.map(product =>
+                        <Product product={product}
+                            key={product.id} handleAddToCart={addToCart}>
+                        </Product>)}
+                </div>
+
+                <div className="cart-container">
+                    <Cart cart={cart}></Cart>
+                </div>
+            </div>
         </>
-   
+
     );
 };
 
