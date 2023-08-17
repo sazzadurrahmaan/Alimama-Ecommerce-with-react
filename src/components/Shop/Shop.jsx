@@ -6,7 +6,7 @@ import './Shop.css';
 
 const Shop = () => {
     const [products, setProducts] = useState([])
-
+    
     const [cart, setCart] = useState([])
 
     const addToCart = (product) => {
@@ -30,7 +30,7 @@ const Shop = () => {
         //step -2 :get the product using id;
         for (const id in storedCart) {
           const addedProduct = products.find(product => product.id === id);
-            
+      
         //step -3 :quantity of the product
         if(addedProduct){
             const quantity = storedCart[id];
@@ -38,7 +38,6 @@ const Shop = () => {
             addedProduct.quantity = quantity;
 
         //step -4: push added product to saved cart
-
             savedCart.push(addedProduct);
         }
 
