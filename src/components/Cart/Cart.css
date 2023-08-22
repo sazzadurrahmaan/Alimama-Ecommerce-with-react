@@ -1,6 +1,8 @@
 .cart{
-    background-color: rgba(255, 153, 0, 0.30);
+    background-color: rgba(160, 6, 255, 0.748);
     padding:25px;
     position: sticky;
     top:0;
+    font-size: 20px;
+    color:antiquewhite;
 }
