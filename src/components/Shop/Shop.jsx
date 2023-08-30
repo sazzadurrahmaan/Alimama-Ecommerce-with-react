@@ -59,6 +59,11 @@ const Shop = () => {
      setCart(savedCart);
     }, [products])
 
+    const removeAllCart = () => {
+        setCart([]);
+        deleteShoppingCart()
+    }
+
     return (
         <>
             <div className='shop-container'>
@@ -70,7 +75,7 @@ const Shop = () => {
                 </div>
 
                 <div className="cart-container">
-                    <Cart cart={cart}></Cart>
+                    <Cart cart={cart} removeAllCart={removeAllCart}></Cart>
                 </div>
             </div>
         </>
