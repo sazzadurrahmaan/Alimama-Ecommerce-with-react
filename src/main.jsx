@@ -12,10 +12,12 @@ import Orders from './components/Orders/Orders.jsx';
 import Inventory from './components/Inventory/Inventory.jsx';
 import Login from './components/Login/Login.jsx';
 import { cartProductLoader } from './components/loader/cartProductLoader.js';
+import ErrorPage from './components/ErrorPage/ErrorPage.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home></Home>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
