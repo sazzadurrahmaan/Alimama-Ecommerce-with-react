@@ -1,7 +1,4 @@
-.review-orders{
-
-}
-.order-info {
+.order-review {
     display: flex;
     align-items: center;
     width: 571px;
@@ -11,8 +8,44 @@
     border: 1px solid #95A0A7;
     padding:24px;
 }
-.order-info img{
-    width: 91px;
-    height: 91px;
+.order-review img{
+    width: 100px;
+    height: 100px;
+    border-radius: 6px;
+background: url(<path-to-image>), lightgray 50% / cover no-repeat;
+}
+.order-info{
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    margin-left: 10px;
+}
+.order-info-text{
+    flex-grow: 1;
+    color: #1C2B35;
+
+/* H6 */
+font-family: Lato;
+font-size: 21px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+letter-spacing: 0.032px;
+}
+.orange-text{
+    color: #F90;
+}
+.delete-btn button{
+    width: 57.714px;
+    height: 57.714px;
     flex-shrink: 0;
+    border-radius: 50%;
+    background-color:rgba(235, 87, 87, 0.30);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.icon-delete{
+    color:#EB5757;
+    font-size: 27px;
 }
