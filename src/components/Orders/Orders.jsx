@@ -1,18 +1,22 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
-
+import Cart from '../Cart/Cart';
+import ReviewOrders from '../ReviewOrders/ReviewOrders';
+import './Orders.css'
 const Orders = () => {
-    const loadedProduct = useLoaderData();
-    const {name,category,img,price,quantity} = loadedProduct;
-    console.log(category)
+    const cart = useLoaderData();
+    
     return (
-        <div>
-          <h1>Orders {loadedProduct.length}</h1>
-            <img src={img} alt="" />
-            <h2>Name :{name}</h2>
-            <h3>Price :{price}</h3>
-            <p>Category :{category}</p>
-            <p>Quantity :{quantity}</p>
+        <div className='orders'>
+            <div className='review-orders'>
+                {cart.map(product => <ReviewOrders
+                    product = {product} key ={product.id}
+                ></ReviewOrders>)}
+            </div>
+            <div>
+                <Cart cart={cart}></Cart>
+            </div>
+  
         </div>
     );
 };
