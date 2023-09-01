@@ -23,24 +23,32 @@ const Orders = () => {
         setCart([]);
         deleteShoppingCart()
     }
-
+    let message;
+    if(cart.length ===0){
+        message = <h1>Please Add Product To Cart</h1>
+    }
     return (
-        <div className='orders'>
-            <div className='review-orders'>
-                {cart.map(product => <ReviewOrders
-                    product={product} key={product.id}
-                    handleCart={handleCart}
-                ></ReviewOrders>)}
-            </div>
-            <div>
-                <Cart
-                    cart={cart}
-                    removeAllCart = {removeAllCart}  > 
-               <Link to="/checkout"> <button className='btn-proceed'>Proceed Checkout   <FontAwesomeIcon  icon={faStepForward} /></button></Link>
-                </Cart>
-            </div>
+        <>
+        {message}
+           <div className='orders'>
+     
+     <div className='review-orders'>
+         {cart.map(product => <ReviewOrders
+             product={product} key={product.id}
+             handleCart={handleCart}
+         ></ReviewOrders>)}
+     </div>
+     <div>
+         <Cart
+             cart={cart}
+             removeAllCart = {removeAllCart}  > 
+        <Link to="/checkout"> <button className='btn-proceed'>Proceed Checkout   <FontAwesomeIcon  icon={faStepForward} /></button></Link>
+         </Cart>
+     </div>
 
-        </div>
+ </div>
+        </>
+     
     );
 };
 
