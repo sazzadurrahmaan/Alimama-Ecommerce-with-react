@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Cart.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import { CartContext } from '../Orders/Orders';
 
 
 const Cart = ({cart,removeAllCart,children}) => {
 
   const handleRemoveAllCart =  removeAllCart;
+  const orderContext = useContext(CartContext);
 
     let totalPrice = 0;
     let totalShipping = 0;
@@ -28,7 +30,7 @@ const Cart = ({cart,removeAllCart,children}) => {
     const grandTotal = totalPrice + totalShipping + tax;
     return (
         <div className='cart'>
-              <h3>Order Summary</h3>
+              <h3>{orderContext}</h3>
               <p>Selected Items :{quantity} </p>
               <p>Total Price :${totalPrice}</p> 
               <p>Total Shipping Charge :${totalShipping}</p>

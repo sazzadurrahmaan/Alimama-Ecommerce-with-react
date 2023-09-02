@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { createContext, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { deleteShoppingCart, removeItem } from '../../utilities/fakeDB';
 import Cart from '../Cart/Cart';
@@ -6,6 +6,8 @@ import ReviewOrders from '../ReviewOrders/ReviewOrders';
 import './Orders.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStepForward } from '@fortawesome/free-solid-svg-icons'
+
+export const CartContext = createContext('Order')
 const Orders = () => {
     const savedCart = useLoaderData();
 
@@ -23,6 +25,7 @@ const Orders = () => {
         setCart([]);
         deleteShoppingCart()
     }
+
     let message;
     if(cart.length ===0){
         message = <h1>Please Add Product To Cart</h1>
@@ -31,7 +34,7 @@ const Orders = () => {
         <>
         {message}
            <div className='orders'>
-     
+        
      <div className='review-orders'>
          {cart.map(product => <ReviewOrders
              product={product} key={product.id}
@@ -39,11 +42,14 @@ const Orders = () => {
          ></ReviewOrders>)}
      </div>
      <div>
-         <Cart
+        <CartContext.Provider value='Order Summary'>
+        <Cart
              cart={cart}
              removeAllCart = {removeAllCart}  > 
         <Link to="/checkout"> <button className='btn-proceed'>Proceed Checkout   <FontAwesomeIcon  icon={faStepForward} /></button></Link>
          </Cart>
+        </CartContext.Provider>
+       
      </div>
 
  </div>
